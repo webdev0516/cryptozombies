@@ -2,8 +2,11 @@ pragma solidity >=0.5.0 <0.6.0;
 
 import "./zombieattack.sol";
 import "./erc721.sol";
+import "./safemath.sol";
 
 contract ZombieOwnership is ZombieAttack, ERC721 {
+
+  using SafeMath for uint256;
 
   mapping (uint => address) zombieApprovals;
 
@@ -31,4 +34,5 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
     zombieApprovals[_tokenId] = _approved;
     emit Approval(msg.sender, _approved, _tokenId);
   }
+
 }
